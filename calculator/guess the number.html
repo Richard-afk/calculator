@@ -1,0 +1,68 @@
+<html>
+    <head>
+        <script>
+            let randNumber = Math.floor(Math.random() * 100) + 1;
+
+            const lowOrHi = document.querySelector(".lowOrHi");
+            const guesses = document.querySelector(".guesses");
+            const lastResult = document.querySelector(".lastResult");
+            const guessField = document.querySelector(".guessField");
+            const guessSubmit = document.querySelector(".guessSubmit");
+            
+            let guessCount = 1;
+            let resetButton;
+            
+            
+            function setGameOver() {
+                guessField.disabled = true;
+                guessSubmit.disabled = true;
+                resetButton = document.createElement('button');
+                resetButton.textContent = 'Start new game';
+                document.body.append(resetButton);
+                resetButton.addEventListener('click', resetGame);
+            }
+            
+            function resetGame(){
+                guessCount = 1;
+
+                const resetParas = document.querySelectorAll('.resultParas p');
+                for (let i = 0 ; i < resetParas.length ; i++) {
+                    resetParas[i].textContent = '';
+                }
+
+                resetButton.parentNode.removeChild(resetButton);
+
+                guessField.disabled = false;
+                guessSubmit.disabled = false;
+                guessField.value = '';
+                
+
+                lastResult.style.backgroundColor = 'white';
+
+                randNumber = Math.floor(Math.random() * 100) + 1;
+            }
+        
+            
+
+            function checkGuess(){
+                console.log("are you working")
+            }
+            guessSubmit.addEventListener('click', checkGuess); 
+
+
+            
+        </script>
+    </head>
+    <body>
+        <div class="resultParas">
+        <p class="guesses"></p>
+        <p class="lastResult"></p>
+        <p class="lowOrHi"></p>
+        </div>
+
+        
+        <label for="guessField">Enter a guess: </label>
+        <input type="text" id="guessField" class="guessField">
+        <input type="button" value="Submit guess" class="guessSubmit">
+    </body>
+</html>

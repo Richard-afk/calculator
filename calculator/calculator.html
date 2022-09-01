@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       *
+       {
+           margin: 0;
+           padding: 0;
+           box-sizing: border-box;
+           font-family: Arial, Helvetica, sans-serif;
+       }
+       body {
+           display: flex;
+           justify-content: center;
+           align-items: center;
+           min-height:100vh;
+           background: #091921; 
+       }
+       body::before{
+           content: '';
+           position: absolute;
+           top: 0;
+           left: 0;
+           height: 100%;
+           width: 100%;
+           background: linear-gradient(#e91e63,#ffc107);
+           clip-path: circle(22% at 30% 20%);
+
+       }
+       body::after{
+           content: '';
+           position: absolute;
+           top: 0;
+           left: 0;
+           height: 100%;
+           width: 100%;
+           background: linear-gradient(#fff,#d11af2);
+           clip-path: circle(20% at 70% 90%);
+       }
+       .container
+       {
+           position: relative;
+           background: rgba(225, 225, 225, 0.05);
+           border-radius: 6px;
+           overflow: hidden;
+           z-index: 10;
+           backdrop-filter: blur(1px);
+           border-top: 3px solid rgba(225, 225, 225, 0.2);
+           border-left: 3px solid rgba(225, 225, 225, 0.2);
+           box-shadow: 5px 5px 30px rgba(0,0,0,0.3);
+       }
+       .container .calculator
+       {
+           position: relative; 
+           display: grid;
+       }
+       .container .calculator .value
+       {
+           grid-column: span 4;
+           height: 140px;
+           width: 300px;
+           text-align: right;
+           border: none;
+           outline: none;
+           padding: 10px;
+           font-size: 30px;
+           background: transparent;
+           color: white;
+           border-bottom: 1px solid rgba(225, 225, 225, 0.05);
+           border-right: 1px solid rgba(225, 225, 225, 0.05);
+       }
+       .container .calculator span
+       {
+           display: grid;
+           width: 75px;
+           height:75px;
+           color: white;
+           font-weight: 400;
+           place-items: center;
+           font-size: 20px;
+           user-select: none;
+           border-bottom: 1px solid rgba(225, 225, 225, 0.05);
+           border-right: 1px solid rgba(225, 225, 225, 0.05);
+       }
+       .container .calculator span:hover
+       {
+           transition: 0.1s;
+           background: rgba(225, 225, 225, 0.05);
+       }
+       .container .calculator span:active
+       {
+           background: #d11af2;
+           color: #240a29;
+       }
+       .container .calculator .clear
+       {
+         grid-column: span 2;
+         width: 150px;  
+       }
+       .container .calculator .equals
+       {
+         grid-row: span 2;
+         height: 150px;  
+       }
+       .container .calculator .zero
+       {
+         grid-column: span 2;
+         width: 150px;  
+       }
+
+    </style>
+   
+</head>
+<body>
+    <div class="container">
+        <form class="calculator" name="calc">
+            <input type="text" readonly class="value" name="txt"/>
+            <span class="num clear" onclick="document.calc.txt.value = ''">c</span>
+            <span class="num" onclick="document.calc.txt.value += '/'">&divide;</span>
+            <span class="num" onclick="document.calc.txt.value += '*'">&times;</span>
+            <span class="num" onclick="document.calc.txt.value += '7'">7</span>
+            <span class="num" onclick="document.calc.txt.value += '8'">8</span>
+            <span class="num" onclick="document.calc.txt.value += '9'">9</span>
+            <span class="num" onclick="document.calc.txt.value += '-'">&minus;</span>
+            <span class="num" onclick="document.calc.txt.value += '4'">4</span>
+            <span class="num" onclick="document.calc.txt.value += '5'">5</span>
+            <span class="num" onclick="document.calc.txt.value += '6'">6</span>
+            <span class="num" onclick="document.calc.txt.value += '+'">&plus;</span>
+            <span class="num" onclick="document.calc.txt.value += '1'">1</span>
+            <span class="num" onclick="document.calc.txt.value += '2'">2</span>
+            <span class="num" onclick="document.calc.txt.value += '3'">3</span>
+            <span class="num equals" onclick="document.calc.txt.value = eval(calc.txt.value) ">&equals;</span>
+            <span class="num" onclick="document.calc.txt.value += '.'">.</span>
+            <span class="num zero" onclick="document.calc.txt.value += '0'">0</span>
+    
+        </form>
+    </div>
+    <script type="text/javascript" src="vanilla-tilt.js"></script>
+    <script type="text/javascript">
+        VanillaTilt.init(document.querySelector(".container"), {
+            max: 15,
+            speed: 300,
+            reverse: true,
+            glare: true,
+            "max-glare": 0.02
+        });
+    </script>
+    <script>
+        const output = document.querySelector("")
+    </script>
+</body>
+</html>a
